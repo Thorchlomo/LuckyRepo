@@ -1,0 +1,9 @@
+name: LuckyBridge
+main: com.byethost33.wikimetns.LuckyMain
+version: 1.0
+api-version: 1.18
+commands:
+   debug:
+      description: Une commande de debug
+      usage: /<command>
+      permission: LuckyBridge.debug
