@@ -1,10 +1,9 @@
 package com.byethost33.wikimetns;
 
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class LuckyListener implements Listener{
@@ -15,11 +14,14 @@ public class LuckyListener implements Listener{
 		event.setJoinMessage("Bienvenue à " + event.getPlayer().getName());
 	}
 	
+	
+	//Idée pour le bug : block break event est un objet et pas un evenement ;)
+	
 	@EventHandler
-	public void BlockBreakEvent(Player player, Block block) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		if (block.getType() == Material.YELLOW_STAINED_GLASS) {
-			player.sendMessage("You break a lucky block");
-			LuckyEvent.Play(player, block);
+	public void onBlockBreak(BlockBreakEvent event) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		if (event.getBlock().getType() == Material.YELLOW_STAINED_GLASS) {
+			//event.getPlayer().sendMessage("You break a lucky block");
+			LuckyEvent.Play(event);
 		}
 	}
 }

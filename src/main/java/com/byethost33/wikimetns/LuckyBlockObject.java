@@ -1,7 +1,6 @@
 package com.byethost33.wikimetns;
 
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
 
 public class LuckyBlockObject {
 	
@@ -28,7 +27,7 @@ public class LuckyBlockObject {
 	 * @param player 
 	 * @return Si l'ouverture à été un succès
 	 */
-	public boolean open(Player player, Block block) {
+	public boolean open(BlockBreakEvent event) {
 		return false;
 	}
 	

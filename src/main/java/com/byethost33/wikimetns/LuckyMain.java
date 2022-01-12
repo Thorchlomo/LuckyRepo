@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.byethost33.wikimetns.commands.Debug;
+import com.byethost33.wikimetns.registers.RegistersLuckyBlockEvent;
 
 public class LuckyMain extends JavaPlugin{
 	
@@ -12,6 +13,9 @@ public class LuckyMain extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
+		System.out.println("Enregistrement des events de lucky block");
+		RegistersLuckyBlockEvent.register();
+		
 		System.out.println("Enregistrement du Listener");
 		
 		// Ecouteur d'event
