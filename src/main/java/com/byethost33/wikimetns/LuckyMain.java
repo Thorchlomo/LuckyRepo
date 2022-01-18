@@ -4,6 +4,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.byethost33.wikimetns.commands.Debug;
+import com.byethost33.wikimetns.commands.FinishGame;
+import com.byethost33.wikimetns.commands.StartGame;
+import com.byethost33.wikimetns.commands.Startpos;
 import com.byethost33.wikimetns.registers.RegistersLuckyBlockEvent;
 
 public class LuckyMain extends JavaPlugin{
@@ -29,6 +32,15 @@ public class LuckyMain extends JavaPlugin{
 		//On enregistre la commande /debug
 		this.getCommand("debug").setExecutor(new Debug());
 		
+		// La longeur est sur x afin de gagner du temps dans le developement
+		this.getCommand("startpos").setExecutor(new Startpos());
+		
+		// La commande qui permet de dire qu'un joueur est gagnant
+		this.getCommand("finishgame").setExecutor(new FinishGame());
+		
+		// La commande qui permet de lancer le jeu
+		this.getCommand("startgame").setExecutor(new StartGame());
+		
 		
 	}
 	
@@ -36,5 +48,6 @@ public class LuckyMain extends JavaPlugin{
 	public void onDisable () {
 		
 	}
+	
 	
 }

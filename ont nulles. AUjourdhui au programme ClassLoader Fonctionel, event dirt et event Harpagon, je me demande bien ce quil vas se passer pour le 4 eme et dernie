@@ -1,0 +1,225 @@
+[33mcommit 4c734f7281e4be898de91fa01c5f19e8cfbf751e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: BuildTools <unconfigured@null.spigotmc.org>
+Date:   Wed Jan 12 20:35:03 2022 +0100
+
+    Jour 3, Amour numéro 3... Nan ok cette ref et cette blague sont nulles. AUjourd'hui au programme ClassLoader Fonctionel, event dirt et event Harpagon, je me demande bien ce qu'il vas se passer pour le 4 eme et dernier jour, surtout que je doit preparer un exposé d'anglais demain, so sad. Allez bonne nuit
+
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/LuckyBlockObject.class b/bin/main/com/byethost33/wikimetns/LuckyBlockObject.class[m
+[1mindex 96f8d6e..6cbf348 100644[m
+Binary files a/bin/main/com/byethost33/wikimetns/LuckyBlockObject.class and b/bin/main/com/byethost33/wikimetns/LuckyBlockObject.class differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/LuckyEvent$1.class b/bin/main/com/byethost33/wikimetns/LuckyEvent$1.class[m
+[1mdeleted file mode 100644[m
+[1mindex 54d465e..0000000[m
+Binary files a/bin/main/com/byethost33/wikimetns/LuckyEvent$1.class and /dev/null differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/LuckyEvent.class b/bin/main/com/byethost33/wikimetns/LuckyEvent.class[m
+[1mindex fd87a3a..0962ec5 100644[m
+Binary files a/bin/main/com/byethost33/wikimetns/LuckyEvent.class and b/bin/main/com/byethost33/wikimetns/LuckyEvent.class differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/LuckyListener.class b/bin/main/com/byethost33/wikimetns/LuckyListener.class[m
+[1mindex 86bc355..7e54755 100644[m
+Binary files a/bin/main/com/byethost33/wikimetns/LuckyListener.class and b/bin/main/com/byethost33/wikimetns/LuckyListener.class differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/LuckyMain.class b/bin/main/com/byethost33/wikimetns/LuckyMain.class[m
+[1mindex 1db225c..91c401c 100644[m
+Binary files a/bin/main/com/byethost33/wikimetns/LuckyMain.class and b/bin/main/com/byethost33/wikimetns/LuckyMain.class differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/events/DemoScreen.class b/bin/main/com/byethost33/wikimetns/events/DemoScreen.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..628857d[m
+Binary files /dev/null and b/bin/main/com/byethost33/wikimetns/events/DemoScreen.class differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/events/DirtyHead.class b/bin/main/com/byethost33/wikimetns/events/DirtyHead.class[m
+[1mindex daf4822..d652997 100644[m
+Binary files a/bin/main/com/byethost33/wikimetns/events/DirtyHead.class and b/bin/main/com/byethost33/wikimetns/events/DirtyHead.class differ
+[1mdiff --git a/bin/main/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.class b/bin/main/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.class[m
+[1mindex eb5adab..cdc87fe 100644[m
+Binary files a/bin/main/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.class and b/bin/main/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.class differ
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/LuckyBlockObject.java b/src/main/java/com/byethost33/wikimetns/LuckyBlockObject.java[m
+[1mindex 961bc29..ade56fd 100644[m
+[1m--- a/src/main/java/com/byethost33/wikimetns/LuckyBlockObject.java[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/LuckyBlockObject.java[m
+[36m@@ -1,7 +1,6 @@[m
+ package com.byethost33.wikimetns;[m
+ [m
+[31m-import org.bukkit.block.Block;[m
+[31m-import org.bukkit.entity.Player;[m
+[32m+[m[32mimport org.bukkit.event.block.BlockBreakEvent;[m
+ [m
+ public class LuckyBlockObject {[m
+ 	[m
+[36m@@ -28,7 +27,7 @@[m [mpublic class LuckyBlockObject {[m
+ 	 * @param player [m
+ 	 * @return Si l'ouverture à été un succès[m
+ 	 */[m
+[31m-	public boolean open(Player player, Block block) {[m
+[32m+[m	[32mpublic boolean open(BlockBreakEvent event) {[m
+ 		return false;[m
+ 	}[m
+ 	[m
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/LuckyEvent.java b/src/main/java/com/byethost33/wikimetns/LuckyEvent.java[m
+[1mindex d340045..4c9063e 100644[m
+[1m--- a/src/main/java/com/byethost33/wikimetns/LuckyEvent.java[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/LuckyEvent.java[m
+[36m@@ -1,8 +1,7 @@[m
+ package com.byethost33.wikimetns;[m
+ [m
+ import java.util.ArrayList;[m
+[31m-import org.bukkit.block.Block;[m
+[31m-import org.bukkit.entity.Player;[m
+[32m+[m[32mimport org.bukkit.event.block.BlockBreakEvent;[m
+ [m
+ public class LuckyEvent {[m
+ 	[m
+[36m@@ -10,20 +9,20 @@[m [mpublic class LuckyEvent {[m
+ 	public static ArrayList<String> eventList = new ArrayList<String>();[m
+ 	[m
+ 	// Fonction pour jouer un event[m
+[31m-	public static int Play (Player player, Block block) throws ClassNotFoundException, InstantiationException, IllegalAccessException {[m
+[32m+[m	[32mpublic static int Play (BlockBreakEvent event) throws ClassNotFoundException, InstantiationException, IllegalAccessException {[m
+ 		[m
+ 		// We create a new class loader[m
+[31m-		ClassLoader cl = new ClassLoader() {};[m
+[32m+[m		[32mClassLoader cl = LuckyEvent.class.getClassLoader();[m
+ 		// On empeche des messages relous de s'afficher et un charge notre classe[m
+ 		@SuppressWarnings("unchecked") // C'est quand meme relou java parfois[m
+[31m-		Class<LuckyBlockObject> eventClass = (Class<LuckyBlockObject>) cl.loadClass(eventList.get(0));[m
+[32m+[m		[32mClass<LuckyBlockObject> eventClass = (Class<LuckyBlockObject>) cl.loadClass(eventList.get(1));[m
+ 		[m
+ 		// On crée une nouvelle instace de notre class[m
+ 		LuckyBlockObject Objet = eventClass.newInstance();[m
+ 		[m
+ 		// On travaille dessus[m
+ 		//Objet.setSomeData(null);[m
+[31m-		System.out.println(Objet.open(player, block));[m
+[32m+[m		[32mSystem.out.println(Objet.open(event));[m
+ 		[m
+ 		return 0;[m
+ 		[m
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/LuckyListener.java b/src/main/java/com/byethost33/wikimetns/LuckyListener.java[m
+[1mindex 6b44c58..72deb4d 100644[m
+[1m--- a/src/main/java/com/byethost33/wikimetns/LuckyListener.java[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/LuckyListener.java[m
+[36m@@ -1,10 +1,9 @@[m
+ package com.byethost33.wikimetns;[m
+ [m
+ import org.bukkit.Material;[m
+[31m-import org.bukkit.block.Block;[m
+[31m-import org.bukkit.entity.Player;[m
+ import org.bukkit.event.EventHandler;[m
+ import org.bukkit.event.Listener;[m
+[32m+[m[32mimport org.bukkit.event.block.BlockBreakEvent;[m
+ import org.bukkit.event.player.PlayerJoinEvent;[m
+ [m
+ public class LuckyListener implements Listener{[m
+[36m@@ -15,11 +14,14 @@[m [mpublic class LuckyListener implements Listener{[m
+ 		event.setJoinMessage("Bienvenue à " + event.getPlayer().getName());[m
+ 	}[m
+ 	[m
+[32m+[m[41m	[m
+[32m+[m	[32m//Idée pour le bug : block break event est un objet et pas un evenement ;)[m
+[32m+[m[41m	[m
+ 	@EventHandler[m
+[31m-	public void BlockBreakEvent(Player player, Block block) throws ClassNotFoundException, InstantiationException, IllegalAccessException {[m
+[31m-		if (block.getType() == Material.YELLOW_STAINED_GLASS) {[m
+[31m-			player.sendMessage("You break a lucky block");[m
+[31m-			LuckyEvent.Play(player, block);[m
+[32m+[m	[32mpublic void onBlockBreak(BlockBreakEvent event) throws ClassNotFoundException, InstantiationException, IllegalAccessException {[m
+[32m+[m		[32mif (event.getBlock().getType() == Material.YELLOW_STAINED_GLASS) {[m
+[32m+[m			[32m//event.getPlayer().sendMessage("You break a lucky block");[m
+[32m+[m			[32mLuckyEvent.Play(event);[m
+ 		}[m
+ 	}[m
+ }[m
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/LuckyMain.java b/src/main/java/com/byethost33/wikimetns/LuckyMain.java[m
+[1mindex a213083..7f99585 100644[m
+[1m--- a/src/main/java/com/byethost33/wikimetns/LuckyMain.java[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/LuckyMain.java[m
+[36m@@ -4,6 +4,7 @@[m [mimport org.bukkit.configuration.file.FileConfiguration;[m
+ import org.bukkit.plugin.java.JavaPlugin;[m
+ [m
+ import com.byethost33.wikimetns.commands.Debug;[m
+[32m+[m[32mimport com.byethost33.wikimetns.registers.RegistersLuckyBlockEvent;[m
+ [m
+ public class LuckyMain extends JavaPlugin{[m
+ 	[m
+[36m@@ -12,6 +13,9 @@[m [mpublic class LuckyMain extends JavaPlugin{[m
+ 	[m
+ 	@Override[m
+ 	public void onEnable() {[m
+[32m+[m		[32mSystem.out.println("Enregistrement des events de lucky block");[m
+[32m+[m		[32mRegistersLuckyBlockEvent.register();[m
+[32m+[m[41m		[m
+ 		System.out.println("Enregistrement du Listener");[m
+ 		[m
+ 		// Ecouteur d'event[m
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/events/DemoScreen.java b/src/main/java/com/byethost33/wikimetns/events/DemoScreen.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..69f1c75[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/events/DemoScreen.java[m
+[36m@@ -0,0 +1,17 @@[m
+[32m+[m[32mpackage com.byethost33.wikimetns.events;[m
+[32m+[m
+[32m+[m[32mimport org.bukkit.Bukkit;[m
+[32m+[m[32mimport org.bukkit.event.block.BlockBreakEvent;[m
+[32m+[m
+[32m+[m[32mimport com.byethost33.wikimetns.LuckyBlockObject;[m
+[32m+[m
+[32m+[m[32mpublic class DemoScreen extends LuckyBlockObject{[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic boolean open(BlockBreakEvent event) {[m
+[32m+[m[41m		[m
+[32m+[m		[32mevent.getPlayer().showDemoScreen();[m
+[32m+[m		[32mBukkit.broadcastMessage(event.getPlayer().getName() + " est prié d'acheter le jeu ;)");[m
+[32m+[m[41m		[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/events/DirtyHead.java b/src/main/java/com/byethost33/wikimetns/events/DirtyHead.java[m
+[1mindex c49b508..2fab379 100644[m
+[1m--- a/src/main/java/com/byethost33/wikimetns/events/DirtyHead.java[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/events/DirtyHead.java[m
+[36m@@ -1,14 +1,17 @@[m
+ package com.byethost33.wikimetns.events;[m
+ [m
+[31m-import org.bukkit.block.Block;[m
+[31m-import org.bukkit.entity.Player;[m
+[32m+[m[32mimport org.bukkit.Bukkit;[m
+[32m+[m[32mimport org.bukkit.Material;[m
+[32m+[m[32mimport org.bukkit.event.block.BlockBreakEvent;[m
+[32m+[m[32mimport org.bukkit.inventory.ItemStack;[m
+ [m
+ import com.byethost33.wikimetns.LuckyBlockObject;[m
+ [m
+ public class DirtyHead extends LuckyBlockObject{[m
+ 	[m
+[31m-	public boolean open(Player player, Block block) {[m
+[31m-		player.setArrowsInBody(200);[m
+[32m+[m	[32mpublic boolean open(BlockBreakEvent event) {[m
+[32m+[m		[32mevent.getPlayer().getInventory().setHelmet(new ItemStack(Material.DIRT));[m
+[32m+[m		[32mBukkit.broadcastMessage(event.getPlayer().getName() + " s'est enfoncé la tete dans la boue");[m
+ 		return true;[m
+ 	}[m
+ 	[m
+[1mdiff --git a/src/main/java/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.java b/src/main/java/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.java[m
+[1mindex edffe6e..2f7716f 100644[m
+[1m--- a/src/main/java/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.java[m
+[1m+++ b/src/main/java/com/byethost33/wikimetns/registers/RegistersLuckyBlockEvent.java[m
+[36m@@ -1,12 +1,19 @@[m
+ package com.byethost33.wikimetns.registers;[m
+ [m
+ import com.byethost33.wikimetns.LuckyEvent;[m
+[32m+[m[32mimport com.byethost33.wikimetns.events.DemoScreen;[m
+[32m+[m[32mimport com.byethost33.wikimetns.events.DirtyHead;[m
+ [m
+ public class RegistersLuckyBlockEvent {[m
+ 	[m
+[31m-	static String basename = "com.byethost33.wikimetns.events";[m
+[32m+[m	[32mprivate static String resolveFullName(Class<?> classe){[m
+[32m+[m[41m		[m
+[32m+[m		[32mreturn classe.toString().replace("class ", "");[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+ 	[m
+ 	public static void register () {[m
+[31m-		LuckyEvent.eventList.add(basename + "DirtyHead");[m
+[32m+[m		[32mLuckyEvent.eventList.add(resolveFullName(DirtyHead.class));[m
+[32m+[m		[32mLuckyEvent.eventList.add(resolveFullName(DemoScreen.class));[m
+ 	}[m
+ }[m

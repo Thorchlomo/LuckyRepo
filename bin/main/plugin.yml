@@ -7,3 +7,15 @@ commands:
       description: Une commande de debug
       usage: /<command>
       permission: LuckyBridge.debug
+   startpos:
+      description: Regle la position de départ des joueurs
+      usage: /startpos <x1> <y1> <z1> <x2> <y2> <z2> <longeur>
+      permission: minecraft.command.setworldspawn	
+   finishgame:
+      description: Termine la partie en marquant un joueur gagnant (utilisez un commande bloc pour la déclencher)
+      usage: /finishgame <winner>
+      permission: minecraft.command.setworldspawn	
+   startgame:
+      description: Lance la partie en teleportant les joueurs aux coordonées sélectionés avec startpos
+      usage: /startgame <joueur1> <joueur2>
+      permission: minecraft.command.setworldspawn

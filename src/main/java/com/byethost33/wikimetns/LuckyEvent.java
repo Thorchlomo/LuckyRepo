@@ -1,6 +1,8 @@
 package com.byethost33.wikimetns;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class LuckyEvent {
@@ -13,9 +15,12 @@ public class LuckyEvent {
 		
 		// We create a new class loader
 		ClassLoader cl = LuckyEvent.class.getClassLoader();
+		
+		// Le nombre aléatoire qui définit le lucky block à donner
+		Random r = new Random();
 		// On empeche des messages relous de s'afficher et un charge notre classe
 		@SuppressWarnings("unchecked") // C'est quand meme relou java parfois
-		Class<LuckyBlockObject> eventClass = (Class<LuckyBlockObject>) cl.loadClass(eventList.get(1));
+		Class<LuckyBlockObject> eventClass = (Class<LuckyBlockObject>) cl.loadClass(eventList.get(r.nextInt(eventList.size())));
 		
 		// On crée une nouvelle instace de notre class
 		LuckyBlockObject Objet = eventClass.newInstance();
